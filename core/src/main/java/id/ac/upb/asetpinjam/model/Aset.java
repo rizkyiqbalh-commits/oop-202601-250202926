@@ -14,41 +14,61 @@ import id.ac.upb.asetpinjam.kontrak.DapatDipinjam;
 public class Aset implements DapatDipinjam {
 
     // TODO minggu 2: field private: kode, nama, status (default TERSEDIA), kondisi (default BAIK).
+    private String Kode;
+    private String Nama;
+    private StatusAset Status = StatusAset.TERSEDIA;
+    private Kondisi kondisi = Kondisi.BAIK;
 
     /** TODO minggu 2: kode dan nama tidak boleh null atau kosong (IllegalArgumentException). */
     public Aset(String kode, String nama) {
-        throw new UnsupportedOperationException("TODO minggu 2: konstruktor Aset");
+        if (kode == null || kode.isEmpty()) {
+            throw new IllegalArgumentException("Kode tidak boleh null atau kosong");
+        }
+        if (nama == null || nama.isEmpty()) {
+            throw new IllegalArgumentException("Nama tidak boleh null atau kosong");
+        }
+         this.Kode = kode;
+         this.Nama = nama;
     }
 
     public String getKode() {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        return Kode;
     }
 
     public String getNama() {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        return Nama;
     }
 
     public StatusAset getStatus() {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        return Status;
     }
 
     public Kondisi getKondisi() {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        return kondisi;
     }
 
     /** TODO minggu 2: nama baru tidak boleh kosong. */
     public void setNama(String nama) {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        if (nama == null || nama.isEmpty()) {
+            throw new IllegalArgumentException("Nama tidak boleh null atau kosong");
+        }
+        this.Nama = nama;
     }
 
     /** TODO minggu 2: status tidak boleh null. */
     public void setStatus(StatusAset status) {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        if (status == null) {
+            throw new IllegalArgumentException("Status tidak boleh null atau kosong");
+        }
+        this.Status = status;
     }
 
     /** TODO minggu 2: kondisi tidak boleh null. */
     public void setKondisi(Kondisi kondisi) {
-        throw new UnsupportedOperationException("TODO minggu 2");
+        if (kondisi == null) {
+            throw new IllegalArgumentException("Kondisi tidak boleh null atau kosong");
+        }
+        this.kondisi = kondisi;
     }
 
     /** TODO minggu 5: true hanya jika status TERSEDIA dan kondisi bukan RUSAK_BERAT. */
