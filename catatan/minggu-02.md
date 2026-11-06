@@ -15,5 +15,5 @@ Memahami konsep Encapsulation dan urutan fungsi untuk pemrogramannya, sehingga s
 - Alat yang dipakai: Gemini
 - Bagian yang dibantu AI: Penjelasan kembali mengenai materi encapsulation
 - Prompt utama: `"Buatkan penjelasan lengkap sintaks OOP (Java) : class, object, dan encapsulation"`
-- Yang saya ubah atau tolak dari saran AI, dan alasannya: -
+- Yang saya ubah atau tolak dari saran AI, dan alasannya: - 
 - Satu hal yang saya pahami lebih baik sekarang: Saya menjadi sedikit memahami tentang urutan struktur yang menggabungnkan Class, Object, dan Encapsulation. 

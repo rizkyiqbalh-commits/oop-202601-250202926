@@ -21,10 +21,10 @@ public class Aset implements DapatDipinjam {
 
     /** TODO minggu 2: kode dan nama tidak boleh null atau kosong (IllegalArgumentException). */
     public Aset(String kode, String nama) {
-        if (kode == null || kode.isEmpty()) {
+        if (kode == null || kode.isBlank()) {
             throw new IllegalArgumentException("Kode tidak boleh null atau kosong");
         }
-        if (nama == null || nama.isEmpty()) {
+        if (nama == null || nama.isBlank()) {
             throw new IllegalArgumentException("Nama tidak boleh null atau kosong");
         }
          this.Kode = kode;
@@ -49,7 +49,7 @@ public class Aset implements DapatDipinjam {
 
     /** TODO minggu 2: nama baru tidak boleh kosong. */
     public void setNama(String nama) {
-        if (nama == null || nama.isEmpty()) {
+        if (nama == null || nama.isBlank()) {
             throw new IllegalArgumentException("Nama tidak boleh null atau kosong");
         }
         this.Nama = nama;
