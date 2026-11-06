@@ -20,3 +20,7 @@ Beberapa kendala yang saya hadapi yaitu penyesuaian struktur tugas yang baru dan
 - Prompt utama: `"Dengan ketentuan tersebut (menyertakan screenshot struktur git), tolong jelaskan konsep pengumpulan tugas yang diminta"`
 - Yang saya ubah atau tolak dari saran AI, dan alasannya: tidak ada, karena yang saya minta dari AI kali ini hanya urutan/skema pengumpulan di github yang baru
 - Satu hal yang saya pahami lebih baik sekarang: ketentuan pengumpulan tugas mata kuliah ini
+
+## Hasil Maven Test
+![Bukti Maven Test](./Screenshoots/MVNTest01.png)
+
