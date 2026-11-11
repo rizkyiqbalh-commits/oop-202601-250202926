@@ -25,6 +25,8 @@ Salin setiap pertanyaan ambigu (nomor 1 sampai 7) ke sini dan jawab. Contoh:
 - Dampak ke kode: (isi)
 - Tes yang membuktikan: (isi)
 
-## Asumsi lain
-
-Tambahkan di sini keputusan lain yang Anda ambil: rumus denda progresif, perubahan skema database, format error API, dan seterusnya.
+## A-02: denda progresif
+- Pertanyaan: Bagaimana rumus progresif jika sudah sampai minggu ke-5 atau lebih?
+- Keputusan: Hari 1–6 memakai tarif harian biasa (1.0x). Hari 7–13 memakai 1.2x tarif flat, hari 14–29 memakai 1.5x tarif flat, dan hari ke-30 ke atas memakai 2.0x tarif flat.
+- Alasan: Skema pengali bertahap ini saya coba untuk memastikan denda semakin berat seiring lamanya keterlambatan, tidak pernah lebih murah dari tarif flat, tidak pernah turun seiring bertambahnya hari, dan pada hari ke-30 dipastikan 2x lipat lebih mahal dari denda flat.
+- Dampak ke kode: `DendaProgresif.hitungDenda`, hari negatif ditolak oleh perhitungan aset. Denda tidak lebih murah dari flat dan terus bertambah ketika hari bertambah. Pada hari ke-30, pengguna dikenakan denda tepat sebesar 200% (2.0x) dari total denda flat harian.
