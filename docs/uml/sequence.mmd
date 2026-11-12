@@ -1,0 +1,31 @@
+%%{init: {'theme': 'default', 'themeVariables': { 'signalColor': '#000000', 'signalTextColor': '#000000', 'labelTextColor': '#000000', 'loopTextColor': '#000000', 'actorTextColor': '#000000', 'actorBorder': '#000000' }}}%%
+sequenceDiagram
+    actor Peminjam
+    participant Katalog as KatalogAset
+    participant Aset
+    participant Denda as AturanDenda
+
+    Peminjam->>Katalog: cari(kata)
+    activate Katalog
+    Katalog-->>Peminjam: List~Aset~
+    deactivate Katalog
+
+    Peminjam->>Aset: ajukanPeminjaman(aset, waktu)
+    activate Aset
+    Aset->>Aset: bisaDipinjam()
+
+    alt Skenario Sukses (Status TERSEDIA & Kondisi != RUSAK_BERAT)
+        rect rgba(18, 246, 113, 0.53)
+            Aset-->>Peminjam: Peminjaman disetujui
+            Note over Aset,Denda: Jika terlambat dikembalikan
+            Aset->>Denda: hitungDenda(aset, hariTerlambat)
+            activate Denda
+            Denda-->>Aset: totalDenda (long)
+            deactivate Denda
+        end
+    else Skenario Bentrok / Ditolak (Tidak Tersedia / Rusak Berat)
+        rect rgba(165, 12, 12, 0.63)
+            Aset-->>Peminjam: Peminjaman ditolak (Aset tidak dapat dipinjam)
+        end
+    end
+    deactivate Aset

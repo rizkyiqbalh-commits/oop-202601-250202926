@@ -1,0 +1,72 @@
+%%{init: {'theme': 'default', 'themeVariables': { 'lineColor': '#000000', 'primaryBorderColor': '#000000' }}}%%
+classDiagram
+    %% Package: id.ac.upb.asetpinjam.kontrak
+    class DapatDipinjam {
+        <<interface>>
+        +bisaDipinjam() boolean
+    }
+
+    %% Package: id.ac.upb.asetpinjam.model
+    class Aset {
+        <<abstract>>
+        -String kode
+        -String nama
+        -StatusAset status
+        -Kondisi kondisi
+        +Aset(String kode, String nama)
+        +getKode() String
+        +getNama() String
+        +getStatus() StatusAset
+        +getKondisi() Kondisi
+        +getJenis()* JenisAset
+        +hitungDenda(int hari)* long
+        +bisaDipinjam() boolean
+    }
+
+    class Ruang {
+        +getJenis() JenisAset
+        +hitungDenda(int hariTerlambat) long
+    }
+
+    class Laptop {
+        +getJenis() JenisAset
+        +hitungDenda(int hariTerlambat) long
+    }
+
+    class AlatLab {
+        +getJenis() JenisAset
+        +hitungDenda(int hariTerlambat) long
+    }
+
+    %% Package: id.ac.upb.asetpinjam.denda
+    class AturanDenda {
+        <<interface>>
+        +hitungDenda(Aset aset, int hari) long
+    }
+
+    class DendaFlat {
+        +hitungDenda(Aset aset, int hari) long
+    }
+
+    class DendaProgresif {
+        +hitungDenda(Aset aset, int hari) long
+    }
+
+    %% Package: id.ac.upb.asetpinjam.katalog
+    class KatalogAset {
+        -List~Aset~ daftar
+        +tambah(Aset aset) void
+        +cari(String kata) List~Aset~
+        +cari(String kata, JenisAset jenis) List~Aset~
+    }
+
+    DapatDipinjam <|.. Aset : implements
+    Aset <|-- Ruang : extends
+    Aset <|-- Laptop : extends
+    Aset <|-- AlatLab : extends
+
+    AturanDenda <|.. DendaFlat : implements
+    AturanDenda <|.. DendaProgresif : implements
+    AturanDenda ..> Aset : uses
+
+    KatalogAset "1" o-- "0..*" Aset : menyimpan
